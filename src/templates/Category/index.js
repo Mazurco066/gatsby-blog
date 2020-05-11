@@ -1,17 +1,65 @@
+import Img from 'gatsby-image';
 import React from 'react';
+import Zoom from 'react-reveal/Zoom';
 
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 
 import SEO from '../../components/SEO';
 
-import { Container } from './styles';
+import {
+  Container,
+  DisplayAuthor,
+  DisplayContainer,
+  DisplayImg,
+  DisplayStarring,
+  DisplayTitle,
+  NoPosts,
+  PostAuthor,
+  PostCategory,
+  PostContainer,
+  PostItem,
+  PostTitle
+} from './styles';
 
-const Post = ({ data }) => {
+const Category = ({ data }) => {
+  const { posts: { nodes }, category } = data;
   return <div>
     <SEO title={data.category.title} />
-    <Container>
-      categoria com o slug {data.category.slug}
-    </Container>
+    <Zoom>
+      <DisplayContainer>
+        <DisplayImg>
+          <Img style={{maxHeight: '100%'}} fluid={category.image.fluid} />
+        </DisplayImg>
+        <DisplayStarring>Categoria</DisplayStarring>
+        <DisplayTitle>{category.title}</DisplayTitle>
+        <DisplayAuthor>{category.description}</DisplayAuthor>
+      </DisplayContainer>
+    </Zoom>
+    <Zoom>
+      <Container overlap={nodes.length}>
+        <PostContainer>
+          {nodes.map(p => (
+            <Link to={`/posts/${p.slug}`} key={p.slug}>
+              <PostItem imgUrl={p.image.fluid.src}>
+                <PostTitle>{p.title}</PostTitle>
+                <PostAuthor>
+                  por <strong>{p.author}</strong> em { new Date(p.publishDate).toLocaleDateString('pt-br') }
+                </PostAuthor>
+                <Link to={`/categories/${p.category.slug}`}>
+                  <PostCategory>
+                    <small>{p.category.title}</small>
+                  </PostCategory>
+                </Link>
+              </PostItem>
+            </Link>
+          ))}
+        </PostContainer>
+        { !nodes.length
+          ? (<NoPosts>Essa categoria não possuí artigos no momento!</NoPosts>)
+          : null
+        }
+      </Container>
+    </Zoom>
   </div>;
 }
 
@@ -27,7 +75,28 @@ export const query = graphql`
         }
       }
     }
+    posts: allContentfulPost(sort: {fields: publishDate, order: DESC}, filter: {category: {slug: {eq: $slug}}}) {
+      nodes {
+        author
+        image {
+          fluid {
+            ...GatsbyContentfulFluid,
+            src
+          }
+          id
+          title
+        }
+        category {
+          slug
+          id
+          title
+        }
+        publishDate
+        slug
+        title
+      }
+    }
   }
 `
 
-export default Post;
+export default Category;

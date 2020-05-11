@@ -84,7 +84,6 @@ export const query = graphql`
         }
         publishDate
         slug
-        subtitle
         title
       }
     }

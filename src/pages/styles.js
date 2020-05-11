@@ -36,7 +36,7 @@ export const DisplayContainer = styled.div`
 `;
 
 export const DisplayImg = styled.div`
-  background-color: ${props => props.theme.primaryDark}!important;
+  background-color: #CCCCCC!important;
   position: absolute;
   z-index: -1;
   top: 0;
