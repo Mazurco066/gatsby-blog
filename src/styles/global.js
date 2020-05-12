@@ -40,4 +40,11 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  /* Post embedded content */
+  .article-content p {
+    line-height: 2;
+    margin: 1.5em 0;
+    font-size: 1rem;
+  }
 `;

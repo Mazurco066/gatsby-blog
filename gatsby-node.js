@@ -5,12 +5,8 @@ exports.createPages = async ({ graphql, actions }) => {
   // Fetching categories and posts from Contentful
   const result = await graphql(`
     query GetAllPosts {
-      posts: allContentfulPost {
-        nodes { slug }
-      },
-      categories: allContentfulCategory {
-        nodes { slug }
-      }
+      posts: allContentfulPost { nodes { slug } },
+      categories: allContentfulCategory { nodes { slug } }
     }
   `);
   // Creating categories pages by template

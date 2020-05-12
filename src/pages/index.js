@@ -31,7 +31,7 @@ const IndexPage = ({ data }) => {
     <Zoom>
       <DisplayContainer>
         <DisplayImg>
-          <Img style={{maxHeight: '100%'}} fluid={latest.image.fluid} />
+          <Img style={{maxHeight: '100%'}} fluid={latest.thumb.fluid} />
         </DisplayImg>
         <DisplayStarring><DisplayStar src={star} /> Ultima Postagem</DisplayStarring>
         <DisplayTitle>{latest.title}</DisplayTitle>
@@ -45,7 +45,7 @@ const IndexPage = ({ data }) => {
         <PostContainer>
           {nodes.map(p => (
             <Link to={`/posts/${p.slug}`} key={p.slug}>
-              <PostItem imgUrl={p.image.fluid.src}>
+              <PostItem imgUrl={p.thumb.fluid.src}>
                 <PostTitle>{p.title}</PostTitle>
                 <PostAuthor>
                   por <strong>{p.author}</strong> em { new Date(p.publishDate).toLocaleDateString('pt-br') }
@@ -69,7 +69,7 @@ export const query = graphql`
     posts: allContentfulPost(sort: {fields: publishDate, order: DESC}) {
       nodes {
         author
-        image {
+        thumb {
           fluid {
             ...GatsbyContentfulFluid,
             src
