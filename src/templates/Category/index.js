@@ -27,7 +27,7 @@ const Category = ({ data }) => {
     <SEO title={data.category.title} />
     <Zoom>
       <DisplayContainer>
-        <DisplayImg>
+        <DisplayImg color={category.color}>
           <Img style={{maxHeight: '100%'}} fluid={category.image.fluid} />
         </DisplayImg>
         <DisplayStarring>Categoria</DisplayStarring>
@@ -69,6 +69,7 @@ export const query = graphql`
       title
       slug
       description
+      color
       image {
         fluid {
           ...GatsbyContentfulFluid

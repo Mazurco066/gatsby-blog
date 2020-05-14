@@ -40,7 +40,7 @@ const Post = ({ data }) => {
     },
     renderMark: {
       [MARKS.CODE]: text => {
-        return <code><pre key={`${text}-key`}>{text}</pre></code>;
+        return <pre key={`${text}-key`}>{text}</pre>
       },
     }
   }

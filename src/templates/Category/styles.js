@@ -36,7 +36,7 @@ export const DisplayContainer = styled.div`
 `;
 
 export const DisplayImg = styled.div`
-  background-color: #CCCCCC!important;
+  ${props => props.color ? `background-color: #${props.color}!important` : 'background-color: #CCCCCC!important'};
   position: absolute;
   z-index: -1;
   top: 0;
