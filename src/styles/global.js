@@ -40,4 +40,22 @@ export default createGlobalStyle`
   button {
     cursor: pointer;
   }
+
+  /* Post embedded content */
+  .article-content p {
+    line-height: 2;
+    margin: 1.5em 0;
+    font-size: 1rem;
+  }
+
+  .article-content p pre {
+    background-color: #212121;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 0.5rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    word-break: break-all;
+    font-size: .75rem;
+  }
 `;

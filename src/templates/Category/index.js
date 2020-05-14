@@ -27,7 +27,7 @@ const Category = ({ data }) => {
     <SEO title={data.category.title} />
     <Zoom>
       <DisplayContainer>
-        <DisplayImg>
+        <DisplayImg color={category.color}>
           <Img style={{maxHeight: '100%'}} fluid={category.image.fluid} />
         </DisplayImg>
         <DisplayStarring>Categoria</DisplayStarring>
@@ -40,7 +40,7 @@ const Category = ({ data }) => {
         <PostContainer>
           {nodes.map(p => (
             <Link to={`/posts/${p.slug}`} key={p.slug}>
-              <PostItem imgUrl={p.image.fluid.src}>
+              <PostItem imgUrl={p.thumb.fluid.src}>
                 <PostTitle>{p.title}</PostTitle>
                 <PostAuthor>
                   por <strong>{p.author}</strong> em { new Date(p.publishDate).toLocaleDateString('pt-br') }
@@ -69,6 +69,7 @@ export const query = graphql`
       title
       slug
       description
+      color
       image {
         fluid {
           ...GatsbyContentfulFluid
@@ -78,9 +79,8 @@ export const query = graphql`
     posts: allContentfulPost(sort: {fields: publishDate, order: DESC}, filter: {category: {slug: {eq: $slug}}}) {
       nodes {
         author
-        image {
+        thumb {
           fluid {
-            ...GatsbyContentfulFluid,
             src
           }
           id
