@@ -47,4 +47,13 @@ export default createGlobalStyle`
     margin: 1.5em 0;
     font-size: 1rem;
   }
+
+  .article-content p code pre {
+    background-color: #212121;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding: 0.5rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
 `;
