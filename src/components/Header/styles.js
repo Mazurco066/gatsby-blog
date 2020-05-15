@@ -43,7 +43,7 @@ export const HeaderAvatar = styled.div`
   align-items: center;
 `;
 
-export const HeaderAvatarImage = styled.img`
+export const HeaderAvatarImage = styled.div`
   max-width: 50px;
   object-fit: cover;
   border-radius: 15px;
@@ -140,7 +140,7 @@ export const DrawerTitleContainer = styled.div`
 `;
 
 export const DrawerTitle = styled.span`
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #FFFFFF;
   text-transform: uppercase;
@@ -155,11 +155,12 @@ export const DrawerItemsContainer = styled.ul`
 
 export const DrawerItem = styled.li`
   cursor: pointer;
-  font-size: 0.875rem;
+  font-size: 1rem;
   font-weight: 600;
   color: #FFFFFF;
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   &:hover {
     color: ${props => props.theme.secondary };
   }
