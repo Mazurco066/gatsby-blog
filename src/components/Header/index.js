@@ -1,9 +1,9 @@
+import Img from 'gatsby-image';
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { useStaticQuery, graphql, Link } from 'gatsby';
 
-import avatar from '../../images/me.png';
 import bars from '../../images/bars.svg';
 import close from '../../images/close.svg';
 
@@ -32,8 +32,15 @@ function Header({ siteTitle }) {
     categories: allContentfulCategory(sort: {fields: title, order: ASC}) {
       nodes { id, title, slug }
     }
+    file(name: {eq: "me"}) {
+      childImageSharp {
+        fixed(width:50, height:50) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
   }`);
-  const { categories: { nodes } } = data;
+  const { categories: { nodes }, file } = data;
   const [ isDrawerOpened, setDrawerOpenState ] = useState(false);
 
   return (
@@ -42,7 +49,9 @@ function Header({ siteTitle }) {
         <HeaderContainer>
           <HeaderAvatar>
             <Link to={'/'}>
-              <HeaderAvatarImage src={avatar} />
+              <HeaderAvatarImage>
+                <Img fixed={file.childImageSharp.fixed} />
+              </HeaderAvatarImage>
             </Link>
             <Link to={'/'}>
               <HeaderAvatarName>{siteTitle}</HeaderAvatarName>
