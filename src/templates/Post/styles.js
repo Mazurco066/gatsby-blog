@@ -120,4 +120,6 @@ export const EmbeddedImage = styled.img`
   object-fit: cover;
 `;
 
-export const EmbeddedArticle = styled.div``;
+export const EmbeddedArticle = styled.div`
+  max-width: 100%;
+`;
