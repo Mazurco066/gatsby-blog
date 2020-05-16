@@ -31,9 +31,11 @@ const Post = ({ data }) => {
   const { file, post: { author, category, content, image, publishDate, title, subtitle } } = data;
   const options = {
     renderNode: {
-      'embedded-asset-block': (node) => (
-        <EmbeddedImage src={node.data.target.fields.file['en-US'].url} alt='Embedded Image'/>
-      ),
+      'embedded-asset-block': (node) => {
+        if (node.data.target && node.data.target.fields) {
+          return <EmbeddedImage src={node.data.target.fields.file['en-US'].url} alt='Embedded Image'/>
+        } else return null
+      },
       'embedded-entry-block': (node) => (
         <EmbeddedArticle></EmbeddedArticle>
       )

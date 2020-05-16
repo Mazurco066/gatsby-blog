@@ -115,6 +115,9 @@ export const BottomAuthorRole = styled.p`
 
 export const PostArticle = styled.article``;
 
-export const EmbeddedImage = styled.img``;
+export const EmbeddedImage = styled.img`
+  max-width: 100%;
+  object-fit: cover;
+`;
 
 export const EmbeddedArticle = styled.div``;
