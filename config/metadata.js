@@ -1,8 +1,8 @@
 module.exports = {
   title: `Gabriel Mazurco`,
-  description: `My awesome blog.`,
+  description: `Tech Blog.`,
   author: `@mazurco066`,
-  siteUrl: `https://mazurco066.github.io`,
+  siteUrl: `https://mazblog.netlify.app`,
   facebookUrl: 'https://www.facebook.com/gabriel.ribeiro.7921/',
   githubUrl: 'https://github.com/Mazurco066',
   linkedinUrl: 'https://www.linkedin.com/in/mazurco066/',
